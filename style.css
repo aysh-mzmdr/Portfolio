@@ -1,0 +1,25 @@
+body{
+    background-color: white;
+    overflow-x: hidden;
+    margin: 0px;
+}
+h1{
+    margin: 0px;
+}
+.intro{
+    background-image:linear-gradient(black, rgba(0, 0, 0, 0));
+    height:100vh;
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10em;
+}
+
+.skills{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap:5em;
+}
