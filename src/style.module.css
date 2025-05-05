@@ -1,20 +1,29 @@
 h1{
     margin: 0px;
 }
-.head{
+
+img{
+    width:15em;
+    height:15em;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.intro{
     width:100vw;
     height:100vh;
     color: white;
     background-image: radial-gradient(circle at top left,black,rgb(59, 58, 58));
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap:8em;
+    gap:8vh;
+    font-size: 2.5vh;
 }
 
 .about{
     width:100vw;
-    height:100vh;
     color:white;
     background-image: radial-gradient(circle at bottom left,black,rgb(59, 58, 58));
     display: flex;
@@ -24,10 +33,13 @@ h1{
 
 .aboutBox{
     text-align: center;
-    width:35em;
-    font-size: 1.8em;
-    margin-block: 1.5em;
-    padding: 1.5em;
+    width:35%;
+    min-width:350px;
+    font-size: 3.5vh;
+    margin-top: 2.5em;
+    margin-bottom: 5.5em;
+    padding-block: 0.65em;
+    padding-inline: 2em;
     border: 1px solid black;
     border-radius: 45px;
     box-shadow: 1px 1px 5px white;
@@ -39,18 +51,52 @@ h1{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    padding-block: 5.5vh;
 }
 
 .skill{
     width:7em;
-    height: 3.5em;
+    height: 2.5em;
     font-size: 2.5em;
-    margin: 0.2em;
+    margin: 0.5em;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    color: white;
+    border-radius: 50px;
+    border:none;
+    box-shadow:1px 1px 5px white ;
 }
 
 .contact{
     background-color: black;
     color: white;
     text-align: center;
-    padding-block: 1.5em;
+    padding-block: 1.5vh;
+}
+
+.head{
+    color:white;
+    font-size: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:100px;
+    background-color: black;
+}
+
+.navbar{
+    position: fixed;
+    display: flex;
+    justify-content: end;
+}
+
+.navbarButton{
+    width:5.5em;
+    height:3em;
+    font-size: 1.8em;
+    background-color: rgba(0, 0, 0, 0);
+    color:white;
+    border: none;
+    border-radius: 15px;
+    cursor:pointer;
 }
