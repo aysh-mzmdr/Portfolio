@@ -1,0 +1,56 @@
+h1{
+    margin: 0px;
+}
+.head{
+    width:100vw;
+    height:100vh;
+    color: white;
+    background-image: radial-gradient(circle at top left,black,rgb(59, 58, 58));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:8em;
+}
+
+.about{
+    width:100vw;
+    height:100vh;
+    color:white;
+    background-image: radial-gradient(circle at bottom left,black,rgb(59, 58, 58));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.aboutBox{
+    text-align: center;
+    width:35em;
+    font-size: 1.8em;
+    margin-block: 1.5em;
+    padding: 1.5em;
+    border: 1px solid black;
+    border-radius: 45px;
+    box-shadow: 1px 1px 5px white;
+}
+
+.skills{
+    background-image: radial-gradient(circle at bottom left,black,rgb(59, 58, 58));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.skill{
+    width:7em;
+    height: 3.5em;
+    font-size: 2.5em;
+    margin: 0.2em;
+}
+
+.contact{
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-block: 1.5em;
+}
