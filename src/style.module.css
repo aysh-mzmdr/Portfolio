@@ -7,6 +7,10 @@ img{
     height:15em;
     border-radius: 50%;
     object-fit: cover;
+    transition:box-shadow 0.5s;
+}
+img:hover{
+    box-shadow: 0px 0px 50px rgb(0, 191, 137);
 }
 
 .intro{
@@ -20,6 +24,7 @@ img{
     align-items: center;
     gap:8vh;
     font-size: 2.5vh;
+    text-shadow: 1px 1px 15px rgb(0, 191, 137) ;
 }
 
 .about{
@@ -36,13 +41,18 @@ img{
     width:35%;
     min-width:350px;
     font-size: 3.5vh;
-    margin-top: 2.5em;
-    margin-bottom: 5.5em;
+    margin: 5.5em;
     padding-block: 0.65em;
     padding-inline: 2em;
     border: 1px solid black;
     border-radius: 45px;
-    box-shadow: 1px 1px 5px white;
+    box-shadow: 1px 1px 15px white;
+    transition:box-shadow 1s;
+}
+
+.aboutBox:hover{
+    box-shadow:1px 1px 100px rgb(0, 191, 137);
+    text-shadow: 1px 1px 5px rgb(0, 191, 137);
 }
 
 .skills{
@@ -58,13 +68,18 @@ img{
     width:7em;
     height: 2.5em;
     font-size: 2.5em;
-    margin: 0.5em;
+    margin: 1em;
     background-color: rgba(0, 0, 0, 0);
     cursor: pointer;
     color: white;
     border-radius: 50px;
     border:none;
     box-shadow:1px 1px 5px white ;
+    transition:box-shadow 0.8s;
+}
+.skill:hover{
+    box-shadow:1px 1px 50px rgb(0, 191, 137);
+    text-shadow: 1px 1px 5px rgb(0, 191, 137);
 }
 
 .contact{
@@ -75,13 +90,16 @@ img{
 }
 
 .head{
-    color:white;
+    color:black;
     font-size: 6vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    height:100px;
-    background-color: black;
+    height:90px;
+    font-weight: 500;
+    background-image: linear-gradient(45deg,black,rgba(0, 0, 0, 0.5),cyan,rgb(0, 191, 137),rgb(0, 213, 153),cyan,rgba(0, 0, 0, 0.5),black);
+    text-shadow:1px 1px 15px white,1px 1px 15px black;
+    box-shadow:1px 1px 50px white;
 }
 
 .navbar{
@@ -91,7 +109,7 @@ img{
 }
 
 .navbarButton{
-    width:5.5em;
+    width:20vw;
     height:3em;
     font-size: 1.8em;
     background-color: rgba(0, 0, 0, 0);
@@ -99,4 +117,18 @@ img{
     border: none;
     border-radius: 15px;
     cursor:pointer;
+    transition: background-color 0.3s, color 0.2s,box-shadow 0.2s;
+    font-weight: 700;
+}
+
+.navbarButton:hover{
+    background-color: rgb(0, 191, 137);
+    color:black;
+    box-shadow: 1px 1px 50px rgb(0, 191, 137);
+}
+
+@media (max-width:900px){
+    .navbar{
+        visibility: hidden;
+    }
 }
