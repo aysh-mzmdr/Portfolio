@@ -64,7 +64,7 @@ function App(){
       <button className={style.navbarButton} onClick={() => gsap.to(window,{scrollTo:ContactGSAP.current,duration:1})}>Contact</button>      
     </div>
       <div className={style.intro} ref={IntroGSAP}>
-        <img src="../assets/MyPhoto.jpg" alt="My Photo"></img>
+        <img className={style.profileimg} src="../assets/MyPhoto.jpg" alt="My Photo"></img>
           <h1 className={style.name}>Ayush Mazumdar</h1>
           <h1 className={style.role} ref={textRef}></h1>
       </div>
@@ -94,10 +94,10 @@ function App(){
       </div>
       <h1 className={style.head}>Projects</h1>
       <div className={style.projects} ref={ProjectsGSAP}>
-          <Card image="../assets/Coffee Website.png" name="Coffee Website" info="A Front-end based website for a Coffee Shop " link="https://aysh-mzmdr.github.io/Coffee_Website/"></Card>
-          <Card image="../assets/Coffee Website.png" name="ObstacleMania" info="A high-speed obstacle dodging game with different levels of difficulty. " link="https://aysh-mzmdr.github.io/ObstacleMania/"></Card>
-          <Card image="../assets/Coffee Website.png" name="Scholars Playground" info="An interactive learning platform that uses gamification elements to engage users." link="https://aysh-mzmdr.github.io/Scholars_Playground/"></Card>
-          <Card image="../assets/Coffee Website.png" name="Pokedex" info="A replica of the Pokedex from the popular anime series Pokemon. " link="https://aysh-mzmdr.github.io/Pokedex/"></Card>
+          <Card image="../assets/Coffee Website.png" name="Coffee Website" info="A Front-end based website meant to be used for a Coffee Shop " link="https://aysh-mzmdr.github.io/Coffee_Website/"></Card>
+          <Card image="../assets/ObstacleMania.png" name="ObstacleMania" info="A high-speed obstacle dodging game with different levels of difficulty. " link="https://aysh-mzmdr.github.io/ObstacleMania/"></Card>
+          <Card image="../assets/Scholars Playground.png" name="Scholars Playground" info="An interactive learning platform that uses gamification elements to engage users." link="https://aysh-mzmdr.github.io/Scholars_Playground/"></Card>
+          <Card image="../assets/Pokedex.png" name="Pokedex" info="A replica of the Pokedex from the popular anime series Pokemon. " link="https://aysh-mzmdr.github.io/Pokedex/"></Card>
       </div>
       <div className={style.contact} ref={ContactGSAP}>
         <div>Made by aysh_mzmdr</div>
