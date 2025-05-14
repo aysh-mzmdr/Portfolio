@@ -1,0 +1,45 @@
+.card{
+    margin: 50px;
+    padding: 50px;
+    display: flex;
+    gap:2.5em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 0px 2px white;
+    width:500px;
+    transition: box-shadow 0.5s;
+}
+
+.name{
+    font-size: 2.6em;
+}
+
+.info{
+    color:white;
+    font-size: 1.2em;
+    line-height: 1.7em;
+    text-align: center;
+}
+
+.linkButton{
+    font-family: monospace;
+    font-size: 1.8em;
+    padding-block: 10px;
+    padding-inline: 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(0, 191, 137);
+    transition: box-shadow 0.5s,background-color 0.5s,color 0.5s,text-shadow 0.5s;
+}
+
+.card:hover{
+    box-shadow: 5px 0px 50px black;
+}
+.linkButton:hover{
+    color:white;
+    text-shadow: 0px 0px 5px black;
+    background-color: rgb(0, 191, 137);
+    box-shadow: 0px 0px 20px rgb(0, 191, 137);
+}

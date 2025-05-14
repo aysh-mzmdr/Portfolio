@@ -2,6 +2,7 @@ import { useRef,useState,useEffect } from "react";
 import {gsap} from "gsap";
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import style from "./style.module.css"
+import Card from "./Card.jsx"
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -12,63 +13,46 @@ function App(){
   const SkillsGSAP=useRef()
   const ProjectsGSAP=useRef()
   const ContactGSAP=useRef()
+  const textRef=useRef()
 
-  // Hacking Transition
-
-  /*const titles=[
-    "Full-Stack Developer",
+  const roles=[
+    "Full Stack Developer",
     "Competitive Programmer",
     "Blockchain Developer",
-    "Cyber-Security Enthusiast"
+    "Cyber Security Enthusiast"
   ]
-  const textRef = useRef();
-    const [index, setIndex] = useState(0);
-  
-    const scrambleText = (text) => {
-      const chars = "!<>-_\\/[]{}—=+*^?#________";
-      const duration = 1.5;
-      const steps = text.length * 3;
-      let frame = 0;
-  
-      const scrambleInterval = setInterval(() => {
-        let output = '';
-        for (let i = 0; i < text.length; i++) {
-          if (frame / steps > i / text.length) {
-            output += text[i];
-          } else {
-            output += chars[Math.floor(Math.random() * chars.length)];
-          }
-        }
-        if (textRef.current) textRef.current.textContent = output;
-  
-        frame++;
-        if (frame >= steps) {
-          clearInterval(scrambleInterval);
-          if (textRef.current) textRef.current.textContent = text;
-        }
-      }, duration * 1000 / steps);
-    };
-  
-    useEffect(() => {
-      scrambleText(titles[index]);
-  
-      const interval = setInterval(() => {
-        const nextIndex = (index + 1) % titles.length;
-        setIndex(nextIndex);
-      }, 3000);
-  
-      return () => clearInterval(interval);
-    }, [index]);
-    
-    <h1
-      ref={textRef}           This goes in return statement
-      style={{
-        fontSize: "2.5rem",
-        color: "#00bf89",
-        textShadow: "0 0 10px #00bf89",
-        fontFamily: "monospace",
-      }}
-    ></h1>*/
+
+  const [index,setIndex] = useState(0);
+
+  const scrambleText=(text) => {  
+
+  const chars="!@#$%^&*()_=+;?/~"
+  let frame=0
+  const step=text.length*3
+  const scrambleInterval = setInterval(() => {
+    let output=""
+    for(let i=0;i<text.length;i++){
+      if(frame/step > i/text.length)
+        output=output + text[i]
+      else
+        output=output + chars[Math.floor(Math.random()*chars.length)]
+      textRef.current.textContent=output
+    }
+    frame++
+    if(frame>=step){
+      clearInterval(scrambleInterval)
+      textRef.current.textContent=text
+    }
+  },1.5*1000/step)
+}
+
+  useEffect(() => {
+    scrambleText(roles[index])
+    const interval = setInterval(() => {
+      setIndex(index==roles.length-1?0:index+1)
+    },3000)
+    return() => clearInterval(interval);
+  },[index])
 
   return(
     <>
@@ -81,8 +65,8 @@ function App(){
     </div>
       <div className={style.intro} ref={IntroGSAP}>
         <img src="../assets/MyPhoto.jpg" alt="My Photo"></img>
-          <h1>Ayush Mazumdar</h1>
-          <h1>Full-Stack Developer</h1>
+          <h1 className={style.name}>Ayush Mazumdar</h1>
+          <h1 className={style.role} ref={textRef}></h1>
       </div>
       <h1 className={style.head} ref={AboutGSAP}>About</h1>
       <div className={style.about}>
@@ -110,7 +94,10 @@ function App(){
       </div>
       <h1 className={style.head}>Projects</h1>
       <div className={style.projects} ref={ProjectsGSAP}>
-
+          <Card image="../assets/Coffee Website.png" name="Coffee Website" info="A Front-end based website for a Coffee Shop " link="https://aysh-mzmdr.github.io/Coffee_Website/"></Card>
+          <Card image="../assets/Coffee Website.png" name="ObstacleMania" info="A high-speed obstacle dodging game with different levels of difficulty. " link="https://aysh-mzmdr.github.io/ObstacleMania/"></Card>
+          <Card image="../assets/Coffee Website.png" name="Scholars Playground" info="An interactive learning platform that uses gamification elements to engage users." link="https://aysh-mzmdr.github.io/Scholars_Playground/"></Card>
+          <Card image="../assets/Coffee Website.png" name="Pokedex" info="A replica of the Pokedex from the popular anime series Pokemon. " link="https://aysh-mzmdr.github.io/Pokedex/"></Card>
       </div>
       <div className={style.contact} ref={ContactGSAP}>
         <div>Made by aysh_mzmdr</div>
