@@ -5,7 +5,7 @@ import style from "./style.module.css"
 import Card from "./Card.jsx"
 import myPhoto from "../assets/MyPhoto.jpg"
 import Linkedin from "../assets/Linkedin.svg"
-import Instagram from "../assets/Instagram.svg.jpg"
+import Instagram from "../assets/Instagram.svg"
 import GitHub from "../assets/GitHub.svg"
 import Resume from "../assets/Resume.png"
 
