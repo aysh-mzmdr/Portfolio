@@ -3,11 +3,11 @@ import {gsap} from "gsap";
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import style from "./style.module.css"
 import Card from "./Card.jsx"
-import myPhoto from "./assets/MyPhoto.jpg"
-import Linkedin from "./assets/Linkedin.svg"
-import Instagram from "./assets/Instagram.svg.jpg"
-import GitHub from "./assets/GitHub.svg"
-import Resume from "./assets/Resume.png"
+import myPhoto from "../assets/MyPhoto.jpg"
+import Linkedin from "../assets/Linkedin.svg"
+import Instagram from "../assets/Instagram.svg.jpg"
+import GitHub from "../assets/GitHub.svg"
+import Resume from "../assets/Resume.png"
 
 gsap.registerPlugin(ScrollToPlugin);
 
