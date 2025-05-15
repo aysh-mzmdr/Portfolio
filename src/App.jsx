@@ -8,6 +8,10 @@ import Linkedin from "../assets/Linkedin.svg"
 import Instagram from "../assets/Instagram.svg"
 import GitHub from "../assets/GitHub.svg"
 import Resume from "../assets/Resume.png"
+import Coffee_Website from "../assets/Coffee Website.png"
+import ObstacleMania from "../assets/ObstacleMania.png"
+import Scholars_Playground from "../assets/Scholars Playground.png"
+import Pokedex from "../assets/Pokedex.png"
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -99,10 +103,10 @@ function App(){
       </div>
       <h1 className={style.head}>Projects</h1>
       <div className={style.projects} ref={ProjectsGSAP}>
-          <Card className={style.blackImage} image="../assets/Coffee Website.png" name="Coffee Website" info="A Front-end based website meant to be used for a Coffee Shop " link="https://aysh-mzmdr.github.io/Coffee_Website/"></Card>
-          <Card className={style.whiteImage} image="../assets/ObstacleMania.png" name="ObstacleMania" info="A high-speed obstacle dodging game with different levels of difficulty. " link="https://aysh-mzmdr.github.io/ObstacleMania/"></Card>
-          <Card className={style.blackImage} image="../assets/Scholars Playground.png" name="Scholars Playground" info="An interactive learning platform that uses gamification elements to engage users." link="https://aysh-mzmdr.github.io/Scholars_Playground/"></Card>
-          <Card className={style.whiteImage} image="../assets/Pokedex.png" name="Pokedex" info="A replica of the Pokedex from the popular anime series Pokemon. " link="https://aysh-mzmdr.github.io/Pokedex/"></Card>
+          <Card className={style.blackImage} image={Coffee_Website} name="Coffee Website" info="A Front-end based website meant to be used for a Coffee Shop " link="https://aysh-mzmdr.github.io/Coffee_Website/"></Card>
+          <Card className={style.whiteImage} image={ObstacleMania} name="ObstacleMania" info="A high-speed obstacle dodging game with different levels of difficulty. " link="https://aysh-mzmdr.github.io/ObstacleMania/"></Card>
+          <Card className={style.blackImage} image={Scholars_Playground} name="Scholars Playground" info="An interactive learning platform that uses gamification elements to engage users." link="https://aysh-mzmdr.github.io/Scholars_Playground/"></Card>
+          <Card className={style.whiteImage} image={Pokedex} name="Pokedex" info="A replica of the Pokedex from the popular anime series Pokemon. " link="https://aysh-mzmdr.github.io/Pokedex/"></Card>
       </div>
       <div className={style.contact} ref={ContactGSAP}>
         <div className={style.iconSection}>
