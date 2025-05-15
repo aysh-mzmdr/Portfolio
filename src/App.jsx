@@ -63,7 +63,7 @@ function App(){
       <button className={style.navbarButton} onClick={() => gsap.to(window,{scrollTo:ContactGSAP.current,duration:1})}>Contact</button>      
     </div>
       <div className={style.intro} ref={IntroGSAP}>
-        <img className={style.profileimg} src="../assets/MyPhoto.jpg" alt="My Photo"></img>
+        <img className={style.profileimg} src="./assets/MyPhoto.jpg" alt="My Photo"></img>
           <h1 className={style.name}>Ayush Mazumdar</h1>
           <h1 className={style.role} ref={textRef}></h1>
       </div>
