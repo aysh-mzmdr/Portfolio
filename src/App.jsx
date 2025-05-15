@@ -99,12 +99,16 @@ function App(){
           <Card className={style.whiteImage} image="../assets/Pokedex.png" name="Pokedex" info="A replica of the Pokedex from the popular anime series Pokemon. " link="https://aysh-mzmdr.github.io/Pokedex/"></Card>
       </div>
       <div className={style.contact} ref={ContactGSAP}>
-        <button className={style.iconButton}><img className={style.icon} src="../assets/Linkedin.svg" alt="Linkedin"></img></button>
-        <button className={style.iconButton}><img className={style.icon} src="../assets/GitHub.svg" alt="GitHub"></img></button>
-        <button className={style.iconButton}><img className={style.icon} src="../assets/Instagram.svg" alt="Intagram"></img></button>
-        <button className={style.iconButton}><img className={style.icon} src="../assets/Resume.png" alt="Resume"></img></button>
-        <h1 style={{color:"white",textShadow:"none"}}>Made by aysh_mzmdr</h1>
-        <h2>Email : ayush.mazumdar111@gmail.com</h2>
+        <div className={style.iconSection}>
+          <div className={style.iconDiv}><button className={style.iconButton} onClick={() => window.open("https://www.linkedin.com/in/aysh-mzmdr/","_blank")}><img className={style.icon} src="../assets/Linkedin.svg" alt="Linkedin"></img></button><p className={style.iconName}>Linkedin</p></div>
+          <div className={style.iconDiv}><button className={style.iconButton} onClick={() => window.open("https://github.com/aysh-mzmdr","_blank")}><img className={style.icon} src="../assets/GitHub.svg" alt="GitHub"></img></button><p className={style.iconName}>GitHub</p></div>
+          <div className={style.iconDiv}><button className={style.iconButton} onClick={() => window.open("https://www.instagram.com/aysh_mzmdr?igsh=MWo3dnYzZDQ0d3I0bw==","_blank")}><img className={style.icon} src="../assets/Instagram.svg" alt="Intagram"></img></button><p className={style.iconName}>Instagram</p></div>
+          <div className={style.iconDiv}><button className={style.iconButton} onClick={() => window.open("","_blank")}><img className={style.icon} src="../assets/Resume.png" alt="Resume"></img></button><p className={style.iconName}>My Resume</p></div>
+        </div>
+        <div className={style.finalText}>
+          <h1 style={{color:"white",textShadow:"none"}}>Made by aysh_mzmdr</h1>
+          <h2>Email : ayush.mazumdar111@gmail.com</h2>
+        </div>
       </div>
     </> 
   )
