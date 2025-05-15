@@ -11,12 +11,6 @@
     transition: box-shadow 0.5s;
 }
 
-.image{
-    max-width: 500px;
-    height:auto;
-    border-radius: 0px;   
-}
-
 .name{
     font-size: 2.6em;
 }

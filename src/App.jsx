@@ -3,7 +3,6 @@ import {gsap} from "gsap";
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import style from "./style.module.css"
 import Card from "./Card.jsx"
-
 gsap.registerPlugin(ScrollToPlugin);
 
 function App(){
@@ -94,16 +93,20 @@ function App(){
       </div>
       <h1 className={style.head}>Projects</h1>
       <div className={style.projects} ref={ProjectsGSAP}>
-          <Card image="../assets/Coffee Website.png" name="Coffee Website" info="A Front-end based website meant to be used for a Coffee Shop " link="https://aysh-mzmdr.github.io/Coffee_Website/"></Card>
-          <Card image="../assets/ObstacleMania.png" name="ObstacleMania" info="A high-speed obstacle dodging game with different levels of difficulty. " link="https://aysh-mzmdr.github.io/ObstacleMania/"></Card>
-          <Card image="../assets/Scholars Playground.png" name="Scholars Playground" info="An interactive learning platform that uses gamification elements to engage users." link="https://aysh-mzmdr.github.io/Scholars_Playground/"></Card>
-          <Card image="../assets/Pokedex.png" name="Pokedex" info="A replica of the Pokedex from the popular anime series Pokemon. " link="https://aysh-mzmdr.github.io/Pokedex/"></Card>
+          <Card className={style.blackImage} image="../assets/Coffee Website.png" name="Coffee Website" info="A Front-end based website meant to be used for a Coffee Shop " link="https://aysh-mzmdr.github.io/Coffee_Website/"></Card>
+          <Card className={style.whiteImage} image="../assets/ObstacleMania.png" name="ObstacleMania" info="A high-speed obstacle dodging game with different levels of difficulty. " link="https://aysh-mzmdr.github.io/ObstacleMania/"></Card>
+          <Card className={style.blackImage} image="../assets/Scholars Playground.png" name="Scholars Playground" info="An interactive learning platform that uses gamification elements to engage users." link="https://aysh-mzmdr.github.io/Scholars_Playground/"></Card>
+          <Card className={style.whiteImage} image="../assets/Pokedex.png" name="Pokedex" info="A replica of the Pokedex from the popular anime series Pokemon. " link="https://aysh-mzmdr.github.io/Pokedex/"></Card>
       </div>
       <div className={style.contact} ref={ContactGSAP}>
-        <div>Made by aysh_mzmdr</div>
-        <div>Hyperlinks to LinkedIn,Github</div>
+        <button className={style.iconButton}><img className={style.icon} src="../assets/Linkedin.svg" alt="Linkedin"></img></button>
+        <button className={style.iconButton}><img className={style.icon} src="../assets/GitHub.svg" alt="GitHub"></img></button>
+        <button className={style.iconButton}><img className={style.icon} src="../assets/Instagram.svg" alt="Intagram"></img></button>
+        <button className={style.iconButton}><img className={style.icon} src="../assets/Resume.png" alt="Resume"></img></button>
+        <h1 style={{color:"white",textShadow:"none"}}>Made by aysh_mzmdr</h1>
+        <h2>Email : ayush.mazumdar111@gmail.com</h2>
       </div>
-    </>
+    </> 
   )
 }
 

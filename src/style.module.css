@@ -14,7 +14,7 @@ h1{
 
 .role{
     width:520px;
-    text-align: end;
+    text-align: center;
 }
 
 .profileimg{
@@ -24,7 +24,7 @@ h1{
     object-fit: cover;
     transition:box-shadow 0.5s;
 }
-img:hover{
+.profileimg:hover{
     box-shadow: 0px 0px 50px rgb(0, 191, 137);
 }
 
@@ -150,6 +150,50 @@ img:hover{
     gap:2.5em;
     justify-content: center;
     align-items: center;
+}
+.whiteImage{
+    max-width: 500px;
+    height:auto;
+    border-radius: 0px;   
+    transition:box-shadow 0.5s;
+}
+
+.blackImage{
+    max-width: 500px;
+    height:auto;
+    border-radius: 0px;   
+    transition:box-shadow 0.5s;
+}
+
+.whiteImage:hover{
+    box-shadow: 0px 0px 30px white;
+}
+
+.blackImage:hover{
+    box-shadow: 0px 0px 30px black;
+}
+
+.contact{
+    height:40vh;
+    line-height: 5em;
+    color:white;
+}
+
+.icon{
+    width:50px;
+    height:auto;
+}
+
+.iconButton{
+    background-color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    transition:box-shadow 0.5s;
+    margin-inline:1.2em;
+}
+
+.iconButton:hover{
+    box-shadow: 0px 0px 30px rgb(0, 191, 137);
 }
 
 @media (max-width:900px){
