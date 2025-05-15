@@ -3,6 +3,12 @@ import {gsap} from "gsap";
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import style from "./style.module.css"
 import Card from "./Card.jsx"
+import myPhoto from "./assets/MyPhoto.jpg"
+import Linkedin from "./assets/Linkedin.svg"
+import Instagram from "./assets/Instagram.svg.jpg"
+import GitHub from "./assets/GitHub.svg"
+import Resume from "./assets/Resume.png"
+
 gsap.registerPlugin(ScrollToPlugin);
 
 function App(){
@@ -63,7 +69,7 @@ function App(){
       <button className={style.navbarButton} onClick={() => gsap.to(window,{scrollTo:ContactGSAP.current,duration:1})}>Contact</button>      
     </div>
       <div className={style.intro} ref={IntroGSAP}>
-        <img className={style.profileimg} src="./assets/MyPhoto.jpg" alt="My Photo"></img>
+        <img className={style.profileimg} src={myPhoto} alt="My Photo"></img>
           <h1 className={style.name}>Ayush Mazumdar</h1>
           <h1 className={style.role} ref={textRef}></h1>
       </div>
@@ -100,10 +106,10 @@ function App(){
       </div>
       <div className={style.contact} ref={ContactGSAP}>
         <div className={style.iconSection}>
-          <div className={style.iconDiv}><button className={style.iconButton} onClick={() => window.open("https://www.linkedin.com/in/aysh-mzmdr/","_blank")}><img className={style.icon} src="../assets/Linkedin.svg" alt="Linkedin"></img></button><p className={style.iconName}>Linkedin</p></div>
-          <div className={style.iconDiv}><button className={style.iconButton} onClick={() => window.open("https://github.com/aysh-mzmdr","_blank")}><img className={style.icon} src="../assets/GitHub.svg" alt="GitHub"></img></button><p className={style.iconName}>GitHub</p></div>
-          <div className={style.iconDiv}><button className={style.iconButton} onClick={() => window.open("https://www.instagram.com/aysh_mzmdr?igsh=MWo3dnYzZDQ0d3I0bw==","_blank")}><img className={style.icon} src="../assets/Instagram.svg" alt="Intagram"></img></button><p className={style.iconName}>Instagram</p></div>
-          <div className={style.iconDiv}><button className={style.iconButton} onClick={() => window.open("","_blank")}><img className={style.icon} src="../assets/Resume.png" alt="Resume"></img></button><p className={style.iconName}>My Resume</p></div>
+          <div className={style.iconDiv}><button className={style.iconButton} onClick={() => window.open("https://www.linkedin.com/in/aysh-mzmdr/","_blank")}><img className={style.icon} src={Linkedin} alt="Linkedin"></img></button><p className={style.iconName}>Linkedin</p></div>
+          <div className={style.iconDiv}><button className={style.iconButton} onClick={() => window.open("https://github.com/aysh-mzmdr","_blank")}><img className={style.icon} src={GitHub} alt="GitHub"></img></button><p className={style.iconName}>GitHub</p></div>
+          <div className={style.iconDiv}><button className={style.iconButton} onClick={() => window.open("https://www.instagram.com/aysh_mzmdr?igsh=MWo3dnYzZDQ0d3I0bw==","_blank")}><img className={style.icon} src={Instagram} alt="Intagram"></img></button><p className={style.iconName}>Instagram</p></div>
+          <div className={style.iconDiv}><button className={style.iconButton} onClick={() => window.open("","_blank")}><img className={style.icon} src={Resume} alt="Resume"></img></button><p className={style.iconName}>My Resume</p></div>
         </div>
         <div className={style.finalText}>
           <h1 style={{color:"white",textShadow:"none"}}>Made by aysh_mzmdr</h1>
