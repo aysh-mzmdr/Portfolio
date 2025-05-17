@@ -38,7 +38,7 @@ h1{
     justify-content: center;
     align-items: center;
     gap:2em;
-    font-size: 1.5em;
+    font-size: 1.4em;
     text-shadow: 1px 1px 15px rgb(0, 191, 137) ;
 }
 .about{
@@ -106,7 +106,7 @@ h1{
 
 .head{
     color:black;
-    font-size: 6vh;
+    font-size: 3em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -225,7 +225,7 @@ h1{
         visibility: hidden;
     }
     .intro{
-        font-size: 1.1em;
+        font-size: 0.8em;
     }
 }
 
