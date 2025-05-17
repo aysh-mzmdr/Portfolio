@@ -38,7 +38,7 @@ h1{
     justify-content: center;
     align-items: center;
     gap:2em;
-    font-size: 2.5vh;
+    font-size: 1.5em;
     text-shadow: 1px 1px 15px rgb(0, 191, 137) ;
 }
 .about{
