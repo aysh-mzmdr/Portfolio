@@ -43,3 +43,9 @@
     background-color: rgb(0, 191, 137);
     box-shadow: 0px 0px 20px rgb(0, 191, 137);
 }
+
+@media (max-width:600px){
+    .card{
+        width:200px;
+    }
+}

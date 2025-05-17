@@ -15,7 +15,7 @@ import Pokedex from "../assets/Pokedex.png"
 
 gsap.registerPlugin(ScrollToPlugin);
 
-function App(){
+function App(){                       // Resume permissions for others
 
   const IntroGSAP=useRef()
   const AboutGSAP=useRef()
@@ -113,7 +113,7 @@ function App(){
           <div className={style.iconDiv}><button className={style.iconButton} onClick={() => window.open("https://www.linkedin.com/in/aysh-mzmdr/","_blank")}><img className={style.icon} src={Linkedin} alt="Linkedin"></img></button><p className={style.iconName}>Linkedin</p></div>
           <div className={style.iconDiv}><button className={style.iconButton} onClick={() => window.open("https://github.com/aysh-mzmdr","_blank")}><img className={style.icon} src={GitHub} alt="GitHub"></img></button><p className={style.iconName}>GitHub</p></div>
           <div className={style.iconDiv}><button className={style.iconButton} onClick={() => window.open("https://www.instagram.com/aysh_mzmdr?igsh=MWo3dnYzZDQ0d3I0bw==","_blank")}><img className={style.icon} src={Instagram} alt="Intagram"></img></button><p className={style.iconName}>Instagram</p></div>
-          <div className={style.iconDiv}><button className={style.iconButton} onClick={() => window.open("","_blank")}><img className={style.icon} src={Resume} alt="Resume"></img></button><p className={style.iconName}>My Resume</p></div>
+          <div className={style.iconDiv}><button className={style.iconButton} onClick={() => window.open("https://drive.google.com/file/d/1-R20VstUSQ1JlsfRXYhp2f9iuVoE2Hga/view?usp=sharing","_blank")}><img className={style.icon} src={Resume} alt="Resume"></img></button><p className={style.iconName}>My Resume</p></div>
         </div>
         <div className={style.finalText}>
           <h1 style={{color:"white",textShadow:"none"}}>Made by aysh_mzmdr</h1>
