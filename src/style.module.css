@@ -236,6 +236,9 @@ h1{
     .name{
         padding-left: 0px;
     }
+    .role{
+        height:50px;
+    }
 }
 
 @media (max-width:900px){
