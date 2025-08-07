@@ -15,7 +15,7 @@ import Pokedex from "../assets/Pokedex.png"
 
 gsap.registerPlugin(ScrollToPlugin);
 
-function App(){                       // Resume permissions for others
+function App(){                       // Text font is big, Text alignment needs to be fixed, Too much gap in homepage components, Fix mobile view
 
   const IntroGSAP=useRef()
   const AboutGSAP=useRef()
@@ -65,13 +65,13 @@ function App(){                       // Resume permissions for others
 
   return(
     <>
-    <div className={style.navbar}>
-      <button className={style.navbarButton} onClick={() => gsap.to(window,{scrollTo:IntroGSAP.current,duration:1})}>Intro</button>
-      <button className={style.navbarButton} onClick={() => gsap.to(window,{scrollTo:AboutGSAP.current,duration:1})}>About</button>
-      <button className={style.navbarButton} onClick={() => gsap.to(window,{scrollTo:SkillsGSAP.current,duration:1})}>Skills</button>
-      <button className={style.navbarButton} onClick={() => gsap.to(window,{scrollTo:ProjectsGSAP.current,duration:1})}>Projects</button>
-      <button className={style.navbarButton} onClick={() => gsap.to(window,{scrollTo:ContactGSAP.current,duration:1})}>Contact</button>      
-    </div>
+      <div className={style.navbar}>
+        <button className={style.navbarButton} onClick={() => gsap.to(window,{scrollTo:IntroGSAP.current,duration:1})}>Intro</button>
+        <button className={style.navbarButton} onClick={() => gsap.to(window,{scrollTo:AboutGSAP.current,duration:1})}>About</button>
+        <button className={style.navbarButton} onClick={() => gsap.to(window,{scrollTo:SkillsGSAP.current,duration:1})}>Skills</button>
+        <button className={style.navbarButton} onClick={() => gsap.to(window,{scrollTo:ProjectsGSAP.current,duration:1})}>Projects</button>
+        <button className={style.navbarButton} onClick={() => gsap.to(window,{scrollTo:ContactGSAP.current,duration:1})}>Contact</button>      
+      </div>
       <div className={style.intro} ref={IntroGSAP}>
         <img className={style.profileimg} src={myPhoto} alt="My Photo"></img>
           <h1 className={style.name}>Ayush Mazumdar</h1>

@@ -118,16 +118,18 @@ h1{
 }
 
 .navbar{
+    width:100vw;
     position: fixed;
     display: flex;
-    justify-content: end;
+    justify-content: space-around;
     backdrop-filter: blur(10px);
 }
 
 .navbarButton{
-    width:20vw;
-    height:3em;
-    font-size: 1.8em;
+    margin-top: 10px;
+    width:200px;
+    height:75px;
+    font-size: 28px;
     background-color: rgba(0, 0, 0, 0);
     color:white;
     border: none;
