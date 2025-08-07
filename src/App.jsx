@@ -74,8 +74,8 @@ function App(){                       // Text font is big, Text alignment needs 
       </div>
       <div className={style.intro} ref={IntroGSAP}>
         <img className={style.profileimg} src={myPhoto} alt="My Photo"></img>
-          <h1 className={style.name}>Ayush Mazumdar</h1>
-          <h1 className={style.role} ref={textRef}></h1>
+        <h1 className={style.name}>Ayush Mazumdar</h1>
+        <h1 className={style.role} ref={textRef}></h1>
       </div>
       <h1 className={style.head} ref={AboutGSAP}>About</h1>
       <div className={style.about}>
