@@ -5,7 +5,7 @@ import { TextPlugin } from 'gsap/TextPlugin';
 import style from "./style.module.css"
 import Card from "./Card.jsx"
 import LoadingSpinner from "./LoadingSpinner.jsx"
-import myPhoto from "../assets/Professional.jpg"
+import myPhoto from "../assets/MyPhoto.jpg"
 import Linkedin from "../assets/Linkedin.svg"
 import Instagram from "../assets/Instagram.svg"
 import GitHub from "../assets/GitHub.svg"
