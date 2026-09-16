@@ -1,0 +1,135 @@
+.contact {
+  position: relative;
+  padding: clamp(5rem, 14vh, 9rem) clamp(1.5rem, 5vw, 4rem) 3rem;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 20%, rgba(0, 255, 136, 0.08), transparent);
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  max-width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+}
+
+.heading {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 700;
+  max-width: 16ch;
+  line-height: 1.1;
+}
+
+.subtitle {
+  color: var(--fg-muted);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  max-width: 46ch;
+}
+
+.emailLink {
+  margin-top: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 0.3s var(--ease-out);
+}
+
+.emailLink:hover {
+  border-color: var(--accent);
+}
+
+.iconSection {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin: 2.5rem 0 3rem;
+}
+
+.iconDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  opacity: 0;
+  transform: translateY(50px) scale(0.8);
+}
+
+.iconButton {
+  width: 68px;
+  height: 68px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+
+.iconButton:hover {
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s var(--ease-out);
+}
+
+.iconButton:hover .icon {
+  filter: brightness(0) saturate(100%) invert(72%) sepia(80%) saturate(1000%) hue-rotate(90deg);
+}
+
+.iconName {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--fg-muted);
+}
+
+.footer {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--fg-faint);
+}
+
+.backToTop {
+  background: none;
+  border: none;
+  color: var(--fg-faint);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  transition: color 0.3s var(--ease-out);
+}
+
+.backToTop:hover {
+  color: var(--accent);
+}

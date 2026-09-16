@@ -1,0 +1,164 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem clamp(1.5rem, 5vw, 4rem);
+  pointer-events: none;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  pointer-events: auto;
+  display: flex;
+  align-items: baseline;
+  gap: 0.15em;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.pillNav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.4rem;
+  background: rgba(10, 10, 12, 0.55);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  pointer-events: auto;
+}
+
+@media (max-width: 760px) {
+  .pillNav {
+    display: none;
+  }
+}
+
+.navLink {
+  position: relative;
+  padding: 0.55rem 1.15rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--fg-muted);
+  background: transparent;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: color 0.3s var(--ease-out);
+  white-space: nowrap;
+}
+
+.navLink.active {
+  color: #050506;
+}
+
+.navLinkBg {
+  position: absolute;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  border-radius: 100px;
+  background: var(--accent);
+  z-index: -1;
+  transition: transform 0.45s var(--ease-out), width 0.45s var(--ease-out);
+}
+
+.menuButton {
+  display: none;
+  pointer-events: auto;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 12, 0.55);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 4px;
+}
+
+@media (max-width: 760px) {
+  .menuButton {
+    display: flex;
+  }
+}
+
+.menuButton span {
+  width: 16px;
+  height: 1.5px;
+  background: var(--fg);
+  transition: transform 0.3s var(--ease-out), opacity 0.3s var(--ease-out);
+}
+
+.menuButton.open span:nth-child(1) {
+  transform: translateY(5.5px) rotate(45deg);
+}
+.menuButton.open span:nth-child(2) {
+  opacity: 0;
+}
+.menuButton.open span:nth-child(3) {
+  transform: translateY(-5.5px) rotate(-45deg);
+}
+
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(5, 5, 6, 0.97);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s var(--ease-out), visibility 0.4s;
+}
+
+.mobileOverlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobileLink {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 8vw, 2.4rem);
+  font-weight: 600;
+  color: var(--fg-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: color 0.3s var(--ease-out);
+}
+
+.mobileOverlay.visible .mobileLink {
+  animation: linkIn 0.5s var(--ease-out) forwards;
+}
+
+.mobileLink:hover {
+  color: var(--accent);
+}
+
+@keyframes linkIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
