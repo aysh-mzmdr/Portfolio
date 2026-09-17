@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { useReducedMotion } from "../hooks/useReducedMotion";
+import { useReducedMotion } from "../../hooks/useReducedMotion";
 import style from "./LoadingSpinner.module.css";
 
-const BOOT_LINES = ["initializing portfolio", "loading modules", "compiling experience"];
+const BOOT_LINES = ["initializing portfolio", "loading projects", "writing skillset"];
 
 function LoadingSpinner() {
   const [percent, setPercent] = useState(0);

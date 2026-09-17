@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger, prefersReducedMotion } from "../utils/gsapSetup";
-import { useMagnetic } from "../hooks/useMagnetic";
-import { scrollToId } from "../utils/scrollTo";
-import Linkedin from "../../assets/Linkedin.svg";
-import Instagram from "../../assets/Instagram.svg";
-import GitHub from "../../assets/GitHub.svg";
-import Resume from "../../assets/Resume.png";
+import { gsap, ScrollTrigger, prefersReducedMotion } from "../../utils/gsapSetup";
+import { useMagnetic } from "../../hooks/useMagnetic";
+import { scrollToId } from "../../utils/scrollTo";
+import Linkedin from "../../../assets/Linkedin.svg";
+import Instagram from "../../../assets/Instagram.svg";
+import GitHub from "../../../assets/GitHub.svg";
+import Resume from "../../../assets/Resume.png";
 import style from "./Contact.module.css";
 
 const LINKS = [

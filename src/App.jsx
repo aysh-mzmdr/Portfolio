@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import CustomCursor from "./components/CustomCursor.jsx";
-import Navbar from "./components/Navbar.jsx";
-import Hero from "./components/Hero.jsx";
-import About from "./components/About.jsx";
-import Skills from "./components/Skills.jsx";
-import Projects from "./components/Projects.jsx";
-import Contact from "./components/Contact.jsx";
-import LoadingSpinner from "./components/LoadingSpinner.jsx";
+import CustomCursor from "./components/CustomCursor/CustomCursor.jsx";
+import Navbar from "./components/Navbar/Navbar.jsx";
+import Hero from "./components/Hero/Hero.jsx";
+import About from "./components/About/About.jsx";
+import Skills from "./components/Skills/Skills.jsx";
+import Projects from "./components/Projects/Projects.jsx";
+import Contact from "./components/Contact/Contact.jsx";
+import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner.jsx";
 import { useReducedMotion } from "./hooks/useReducedMotion";
 
 function App() {

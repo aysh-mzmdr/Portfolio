@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { scrollToId } from "../utils/scrollTo";
+import { scrollToId } from "../../utils/scrollTo";
 import style from "./Navbar.module.css";
 
 const SECTIONS = [
@@ -25,7 +25,10 @@ function Navbar() {
           if (entry.isIntersecting) setActiveId(entry.target.id);
         });
       },
-      { threshold: 0.5 }
+      // Thin horizontal band ~1/4 down the viewport, so a section is "active"
+      // as soon as it crosses that line — independent of the section's height
+      // (a plain 50% threshold never fires for sections taller than 2x the viewport).
+      { rootMargin: "-20% 0px -75% 0px", threshold: 0 }
     );
     elements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
@@ -49,7 +52,7 @@ function Navbar() {
     <>
       <div className={style.navbar}>
         <div className={style.logo}>
-          Ayush<span>.</span>
+          aysh<span className={style.underscore}>_</span><span>mzmdr</span>
         </div>
 
         <nav className={style.pillNav} ref={navRef}>

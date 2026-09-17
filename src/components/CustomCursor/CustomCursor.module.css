@@ -5,7 +5,8 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--fg);
+  box-shadow: 0 0 0 1.5px rgba(5, 5, 6, 0.5);
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%, -50%);
@@ -31,6 +32,6 @@
 .ringActive {
   width: 64px;
   height: 64px;
-  border-color: var(--accent);
-  background: var(--accent-dim);
+  border-color: var(--accent-2);
+  background: var(--accent-2-dim);
 }

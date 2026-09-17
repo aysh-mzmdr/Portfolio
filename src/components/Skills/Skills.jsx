@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger, prefersReducedMotion } from "../utils/gsapSetup";
+import { gsap, ScrollTrigger, prefersReducedMotion } from "../../utils/gsapSetup";
 import style from "./Skills.module.css";
 
 const CATEGORIES = [
@@ -9,8 +9,12 @@ const CATEGORIES = [
     label: "Blockchain",
     items: ["Solidity", "Web3Js", "Ganache", "Truffle", "Hardhat", "Foundry"],
   },
-  { label: "Databases", items: ["MySQL", "PostgreSQL"] },
-  { label: "Tools & Systems", items: ["GSAP", "ThreeJs", "Blender", "Windows", "Linux"] },
+  { label: "Databases", items: ["MySQL", "PostgreSQL", "MongoDB"] },
+  {
+    label: "Tools & Systems",
+    items: ["GSAP", "ThreeJs", "Blender", "Windows", "Linux", "Kali Linux"],
+  },
+  { label: "Security", items: ["Nmap", "Burp Suite", "Hydra", "Wireshark"] },
 ];
 
 function Skills() {

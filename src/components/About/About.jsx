@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger, prefersReducedMotion } from "../utils/gsapSetup";
+import { gsap, ScrollTrigger, prefersReducedMotion } from "../../utils/gsapSetup";
 import style from "./About.module.css";
 
 const STATS = [
   { value: 4, suffix: "", label: "Projects Shipped" },
   { value: 3, suffix: "", label: "Core Domains" },
-  { value: 20, suffix: "", label: "Technologies" },
+  { value: 26, suffix: "", label: "Technologies" },
 ];
 
 function About() {

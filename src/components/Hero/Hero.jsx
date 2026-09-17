@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "../utils/gsapSetup";
-import myPhoto from "../../assets/MyPhoto.jpg";
-import { useReducedMotion } from "../hooks/useReducedMotion";
-import { scrollToId } from "../utils/scrollTo";
+import { gsap } from "../../utils/gsapSetup";
+import myPhoto from "../../../assets/MyPhoto.jpg";
+import { useReducedMotion } from "../../hooks/useReducedMotion";
+import { scrollToId } from "../../utils/scrollTo";
 import style from "./Hero.module.css";
 
 const ROLES = [
@@ -27,7 +27,7 @@ function Hero() {
     if (!canvas) return;
     let destroy;
     let cancelled = false;
-    import("../three/heroScene").then(({ createHeroScene }) => {
+    import("../../three/heroScene").then(({ createHeroScene }) => {
       if (cancelled) return;
       destroy = createHeroScene(canvas, { reduceMotion: reducedMotion });
     });
@@ -141,15 +141,6 @@ function Hero() {
           </button>
         </div>
       </div>
-
-      <button
-        className={style.scrollCue}
-        onClick={() => scrollToId("about")}
-        aria-label="Scroll to About section"
-      >
-        <span>Scroll</span>
-        <span className={style.scrollLine}></span>
-      </button>
     </section>
   );
 }

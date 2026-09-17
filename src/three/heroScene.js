@@ -1,9 +1,10 @@
 import * as THREE from "three";
 
 /**
- * Mounts an ambient WebGL scene (drifting particle field + a layered
- * wireframe icosahedron) into the given canvas. Returns a cleanup
- * function that disposes every GPU resource it allocated.
+ * Mounts an ambient WebGL scene (drifting particle field + a drifting
+ * node graph that draws connecting lines between nearby nodes) into the
+ * given canvas. Returns a cleanup function that disposes every GPU
+ * resource it allocated.
  */
 export function createHeroScene(canvas, { reduceMotion = false } = {}) {
   const renderer = new THREE.WebGLRenderer({
@@ -50,29 +51,126 @@ export function createHeroScene(canvas, { reduceMotion = false } = {}) {
   const particles = new THREE.Points(particleGeo, particleMat);
   scene.add(particles);
 
-  const group = new THREE.Group();
-  const coreGeo = new THREE.IcosahedronGeometry(2.15, 1);
-  const coreMat = new THREE.MeshBasicMaterial({
-    color: 0x00ff88,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.45,
-  });
-  const core = new THREE.Mesh(coreGeo, coreMat);
-  group.add(core);
+  const graphGroup = new THREE.Group();
+  graphGroup.position.set(4.6, 0, -2);
 
-  const glowGeo = new THREE.IcosahedronGeometry(2.32, 1);
-  const glowMat = new THREE.MeshBasicMaterial({
-    color: 0x7c3aed,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.16,
-  });
-  const glow = new THREE.Mesh(glowGeo, glowMat);
-  group.add(glow);
+  const NODE_COUNT = window.innerWidth < 640 ? 24 : 46;
+  const CONNECT_DISTANCE = 1.5;
+  const BOUNDS = new THREE.Vector3(1.7, 1.9, 1.4);
 
-  group.position.x = 2.4;
-  scene.add(group);
+  const nodePositions = [];
+  const nodeVelocities = [];
+  const nodeColors = [];
+  const nodeColorA = new THREE.Color("#00ff88");
+  const nodeColorB = new THREE.Color("#7c3aed");
+
+  for (let i = 0; i < NODE_COUNT; i++) {
+    nodePositions.push(
+      new THREE.Vector3(
+        (Math.random() * 2 - 1) * BOUNDS.x,
+        (Math.random() * 2 - 1) * BOUNDS.y,
+        (Math.random() * 2 - 1) * BOUNDS.z
+      )
+    );
+    nodeVelocities.push(
+      new THREE.Vector3(
+        (Math.random() * 2 - 1) * 0.18,
+        (Math.random() * 2 - 1) * 0.18,
+        (Math.random() * 2 - 1) * 0.18
+      )
+    );
+    nodeColors.push(nodeColorA.clone().lerp(nodeColorB, Math.random()));
+  }
+
+  const nodePosArray = new Float32Array(NODE_COUNT * 3);
+  const nodeColorArray = new Float32Array(NODE_COUNT * 3);
+  nodeColors.forEach((c, i) => {
+    nodeColorArray[i * 3 + 0] = c.r;
+    nodeColorArray[i * 3 + 1] = c.g;
+    nodeColorArray[i * 3 + 2] = c.b;
+  });
+
+  const nodeGeo = new THREE.BufferGeometry();
+  nodeGeo.setAttribute("position", new THREE.BufferAttribute(nodePosArray, 3));
+  nodeGeo.setAttribute("color", new THREE.BufferAttribute(nodeColorArray, 3));
+  const nodeMat = new THREE.PointsMaterial({
+    size: 0.16,
+    map: dotTexture,
+    transparent: true,
+    depthWrite: false,
+    vertexColors: true,
+    blending: THREE.AdditiveBlending,
+  });
+  const nodePoints = new THREE.Points(nodeGeo, nodeMat);
+  graphGroup.add(nodePoints);
+
+  const MAX_EDGES = NODE_COUNT * 8;
+  const edgePositions = new Float32Array(MAX_EDGES * 2 * 3);
+  const edgeColors = new Float32Array(MAX_EDGES * 2 * 3);
+  const edgeGeo = new THREE.BufferGeometry();
+  edgeGeo.setAttribute("position", new THREE.BufferAttribute(edgePositions, 3));
+  edgeGeo.setAttribute("color", new THREE.BufferAttribute(edgeColors, 3));
+  edgeGeo.setDrawRange(0, 0);
+  const edgeMat = new THREE.LineBasicMaterial({
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.7,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+  });
+  const edgeLines = new THREE.LineSegments(edgeGeo, edgeMat);
+  graphGroup.add(edgeLines);
+
+  scene.add(graphGroup);
+
+  function updateGraph(delta) {
+    for (let i = 0; i < NODE_COUNT; i++) {
+      const p = nodePositions[i];
+      const v = nodeVelocities[i];
+      p.addScaledVector(v, delta);
+      if (p.x > BOUNDS.x || p.x < -BOUNDS.x) v.x *= -1;
+      if (p.y > BOUNDS.y || p.y < -BOUNDS.y) v.y *= -1;
+      if (p.z > BOUNDS.z || p.z < -BOUNDS.z) v.z *= -1;
+      nodePosArray[i * 3 + 0] = p.x;
+      nodePosArray[i * 3 + 1] = p.y;
+      nodePosArray[i * 3 + 2] = p.z;
+    }
+    nodeGeo.attributes.position.needsUpdate = true;
+
+    let edgeCount = 0;
+    for (let i = 0; i < NODE_COUNT && edgeCount < MAX_EDGES; i++) {
+      for (let j = i + 1; j < NODE_COUNT && edgeCount < MAX_EDGES; j++) {
+        const dist = nodePositions[i].distanceTo(nodePositions[j]);
+        if (dist >= CONNECT_DISTANCE) continue;
+
+        const alpha = 1 - dist / CONNECT_DISTANCE;
+        const pIdx = edgeCount * 6;
+        edgePositions[pIdx + 0] = nodePositions[i].x;
+        edgePositions[pIdx + 1] = nodePositions[i].y;
+        edgePositions[pIdx + 2] = nodePositions[i].z;
+        edgePositions[pIdx + 3] = nodePositions[j].x;
+        edgePositions[pIdx + 4] = nodePositions[j].y;
+        edgePositions[pIdx + 5] = nodePositions[j].z;
+
+        const r = ((nodeColors[i].r + nodeColors[j].r) / 2) * alpha;
+        const g = ((nodeColors[i].g + nodeColors[j].g) / 2) * alpha;
+        const b = ((nodeColors[i].b + nodeColors[j].b) / 2) * alpha;
+        edgeColors[pIdx + 0] = r;
+        edgeColors[pIdx + 1] = g;
+        edgeColors[pIdx + 2] = b;
+        edgeColors[pIdx + 3] = r;
+        edgeColors[pIdx + 4] = g;
+        edgeColors[pIdx + 5] = b;
+
+        edgeCount++;
+      }
+    }
+    edgeGeo.setDrawRange(0, edgeCount * 2);
+    edgeGeo.attributes.position.needsUpdate = true;
+    edgeGeo.attributes.color.needsUpdate = true;
+  }
+
+  updateGraph(0);
 
   let pointerX = 0;
   let pointerY = 0;
@@ -111,8 +209,9 @@ export function createHeroScene(canvas, { reduceMotion = false } = {}) {
     const elapsed = clock.getElapsedTime();
 
     if (!reduceMotion) {
-      group.rotation.y += delta * 0.14;
-      group.rotation.x = Math.sin(elapsed * 0.2) * 0.18;
+      updateGraph(delta);
+      graphGroup.rotation.y += delta * 0.06;
+      graphGroup.rotation.x = Math.sin(elapsed * 0.15) * 0.1;
       particles.rotation.y -= delta * 0.018;
 
       easedPointerX += (pointerX - easedPointerX) * 0.04;
@@ -123,7 +222,7 @@ export function createHeroScene(canvas, { reduceMotion = false } = {}) {
       camera.lookAt(0, 0, 0);
 
       const parallax = -scrollY * 0.0016;
-      group.position.y = parallax;
+      graphGroup.position.y = parallax;
       particles.position.y = parallax * 0.5;
     }
 
@@ -150,10 +249,10 @@ export function createHeroScene(canvas, { reduceMotion = false } = {}) {
 
     particleGeo.dispose();
     particleMat.dispose();
-    coreGeo.dispose();
-    coreMat.dispose();
-    glowGeo.dispose();
-    glowMat.dispose();
+    nodeGeo.dispose();
+    nodeMat.dispose();
+    edgeGeo.dispose();
+    edgeMat.dispose();
     dotTexture.dispose();
     renderer.dispose();
   };

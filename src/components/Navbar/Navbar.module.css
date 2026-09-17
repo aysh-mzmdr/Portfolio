@@ -18,9 +18,18 @@
   letter-spacing: -0.02em;
   color: var(--fg);
   pointer-events: auto;
-  display: flex;
-  align-items: baseline;
-  gap: 0.15em;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.underscore {
+  color: var(--accent);
+  background: linear-gradient(90deg, var(--fg), var(--accent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .logo span {

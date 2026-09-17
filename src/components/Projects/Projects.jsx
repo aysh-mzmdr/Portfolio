@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger, prefersReducedMotion } from "../utils/gsapSetup";
-import ProjectCard from "./ProjectCard";
+import { gsap, ScrollTrigger, prefersReducedMotion } from "../../utils/gsapSetup";
+import ProjectCard from "../ProjectCard/ProjectCard";
 import style from "./Projects.module.css";
-import Chemical_Equipment_Parameter_Visualizer from "../../assets/Chemical_Equipment_Parameter_Visualizer.jpg";
-import ObstacleMania from "../../assets/ObstacleMania.jpg";
-import Solidity_Wallet from "../../assets/Solidity_Wallet.jpg";
-import Coffee_Website from "../../assets/Coffee Website.jpg";
+import Chemical_Equipment_Parameter_Visualizer from "../../../assets/Chemical_Equipment_Parameter_Visualizer.jpg";
+import ObstacleMania from "../../../assets/ObstacleMania.jpg";
+import Solidity_Wallet from "../../../assets/Solidity_Wallet.jpg";
+import Coffee_Website from "../../../assets/Coffee Website.jpg";
 
 const PROJECTS = [
   {
