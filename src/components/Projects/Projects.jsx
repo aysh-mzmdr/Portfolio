@@ -2,41 +2,9 @@ import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger, prefersReducedMotion } from "../../utils/gsapSetup";
 import ProjectCard from "../ProjectCard/ProjectCard";
 import style from "./Projects.module.css";
-import Chemical_Equipment_Parameter_Visualizer from "../../../assets/Chemical_Equipment_Parameter_Visualizer.jpg";
-import ObstacleMania from "../../../assets/ObstacleMania.jpg";
-import Solidity_Wallet from "../../../assets/Solidity_Wallet.jpg";
-import Coffee_Website from "../../../assets/Coffee Website.jpg";
+import { projects } from "../../data/projects";
 
-const PROJECTS = [
-  {
-    image: Chemical_Equipment_Parameter_Visualizer,
-    name: "Chemical Equipment Parameter Visualizer",
-    info: "A hybrid web and desktop application to analyze and visualize chemical equipment data in real time.",
-    link: "https://github.com/aysh-mzmdr/Chemical_Equipment_Parameter_Visualizer/",
-    tags: ["Python", "JavaScript", "Data Visualization"],
-  },
-  {
-    image: ObstacleMania,
-    name: "ObstacleMania",
-    info: "A high-speed obstacle dodging game built in Unity with multiple difficulty levels and real-time collision mechanics.",
-    link: "https://aysh-mzmdr.github.io/ObstacleMania/",
-    tags: ["Unity", "C#", "WebGL"],
-  },
-  {
-    image: Solidity_Wallet,
-    name: "Solidity Wallet",
-    info: "A decentralized wallet interface for sending and receiving Ether through on-chain blockchain transactions.",
-    link: "https://github.com/aysh-mzmdr/Solidity_Wallet/",
-    tags: ["Solidity", "Web3.js", "Ethereum"],
-  },
-  {
-    image: Coffee_Website,
-    name: "Coffee Website",
-    info: "A front-end responsive website designed and built for a fictional coffee shop brand.",
-    link: "https://aysh-mzmdr.github.io/Coffee_Website/",
-    tags: ["HTML", "CSS", "JavaScript"],
-  },
-];
+const PROJECTS = projects;
 
 function Projects() {
   const sectionRef = useRef(null);

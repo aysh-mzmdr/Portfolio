@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "../../utils/gsapSetup";
-import myPhoto from "../../../assets/MyPhoto.jpg";
+import myPhoto from "../../../assets/Professional.jpg";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
 import { scrollToId } from "../../utils/scrollTo";
 import style from "./Hero.module.css";
@@ -10,6 +10,7 @@ const ROLES = [
   "Competitive Programmer",
   "Blockchain Developer",
   "Cyber Security Enthusiast",
+  "Game Developer"
 ];
 
 const SCRAMBLE_CHARS = "!@#$%^&*()_=+;?/~";
@@ -117,7 +118,7 @@ function Hero() {
 
       <div className={style.content} ref={contentRef}>
         <span className="eyebrow" data-reveal>
-          Full Stack &middot; Blockchain &middot; Security
+          Full Stack &middot; Cyber Security
         </span>
 
         <div className={style.photoOuter}>

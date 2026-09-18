@@ -52,11 +52,19 @@ export function createHeroScene(canvas, { reduceMotion = false } = {}) {
   scene.add(particles);
 
   const graphGroup = new THREE.Group();
-  graphGroup.position.set(4.6, 0, -2);
+  const GRAPH_Z = -2;
+  const GRAPH_START_X = 4.6;
+  graphGroup.position.set(GRAPH_START_X, 0, GRAPH_Z);
 
   const NODE_COUNT = window.innerWidth < 640 ? 24 : 46;
   const CONNECT_DISTANCE = 1.5;
   const BOUNDS = new THREE.Vector3(1.7, 1.9, 1.4);
+  // Keeps the cluster's own spread (plus a little breathing room) from
+  // poking past whatever screen-edge bound we clamp its center to.
+  const CLUSTER_MARGIN = Math.max(BOUNDS.x, BOUNDS.y) + 0.4;
+  // Soft preference: stay clear of the centered hero text/CTAs. Only
+  // honored when it doesn't conflict with staying on screen (see below).
+  const TEXT_CLEARANCE_X = 2.6;
 
   const nodePositions = [];
   const nodeVelocities = [];
@@ -172,6 +180,39 @@ export function createHeroScene(canvas, { reduceMotion = false } = {}) {
 
   updateGraph(0);
 
+  // Bounds (in world units, at the graph's fixed depth) that the visible
+  // screen maps to for the current camera/viewport, shrunk by the
+  // cluster's own radius so the whole graph — not just its center point
+  // — stays on screen.
+  function computeWanderBounds() {
+    const distance = camera.position.z - GRAPH_Z;
+    const verticalFov = (camera.fov * Math.PI) / 180;
+    const visibleHeight = 2 * Math.tan(verticalFov / 2) * distance;
+    const visibleWidth = visibleHeight * camera.aspect;
+    const halfW = Math.max(visibleWidth / 2 - CLUSTER_MARGIN, 0);
+    const halfH = Math.max(visibleHeight / 2 - CLUSTER_MARGIN, 0);
+
+    // Prefer staying right of the text column, but never at the cost of
+    // going off-screen on narrow viewports.
+    const minX = Math.min(Math.max(-halfW, TEXT_CLEARANCE_X), halfW);
+
+    return { minX, maxX: halfW, minY: -halfH, maxY: halfH };
+  }
+
+  let wanderX = graphGroup.position.x;
+  let wanderY = graphGroup.position.y;
+  let wanderTargetX = wanderX;
+  let wanderTargetY = wanderY;
+  let wanderTimer = 0;
+  const WANDER_INTERVAL = 7;
+
+  function pickWanderTarget() {
+    const bounds = computeWanderBounds();
+    wanderTargetX = bounds.minX + Math.random() * (bounds.maxX - bounds.minX);
+    wanderTargetY = bounds.minY + Math.random() * (bounds.maxY - bounds.minY);
+  }
+  pickWanderTarget();
+
   let pointerX = 0;
   let pointerY = 0;
   let easedPointerX = 0;
@@ -197,6 +238,14 @@ export function createHeroScene(canvas, { reduceMotion = false } = {}) {
     camera.aspect = clientWidth / clientHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(clientWidth, clientHeight, false);
+
+    // Re-clamp so a resize (e.g. a phone rotation) can't strand the
+    // graph outside the newly-sized visible area.
+    const bounds = computeWanderBounds();
+    wanderX = THREE.MathUtils.clamp(wanderX, bounds.minX, bounds.maxX);
+    wanderY = THREE.MathUtils.clamp(wanderY, bounds.minY, bounds.maxY);
+    wanderTargetX = THREE.MathUtils.clamp(wanderTargetX, bounds.minX, bounds.maxX);
+    wanderTargetY = THREE.MathUtils.clamp(wanderTargetY, bounds.minY, bounds.maxY);
   }
   resize();
 
@@ -214,6 +263,14 @@ export function createHeroScene(canvas, { reduceMotion = false } = {}) {
       graphGroup.rotation.x = Math.sin(elapsed * 0.15) * 0.1;
       particles.rotation.y -= delta * 0.018;
 
+      wanderTimer += delta;
+      if (wanderTimer >= WANDER_INTERVAL) {
+        wanderTimer = 0;
+        pickWanderTarget();
+      }
+      wanderX += (wanderTargetX - wanderX) * delta * 0.15;
+      wanderY += (wanderTargetY - wanderY) * delta * 0.15;
+
       easedPointerX += (pointerX - easedPointerX) * 0.04;
       easedPointerY += (pointerY - easedPointerY) * 0.04;
 
@@ -222,7 +279,8 @@ export function createHeroScene(canvas, { reduceMotion = false } = {}) {
       camera.lookAt(0, 0, 0);
 
       const parallax = -scrollY * 0.0016;
-      graphGroup.position.y = parallax;
+      graphGroup.position.x = wanderX;
+      graphGroup.position.y = wanderY + parallax;
       particles.position.y = parallax * 0.5;
     }
 

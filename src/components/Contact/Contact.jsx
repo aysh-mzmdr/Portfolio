@@ -67,9 +67,9 @@ function Contact() {
     <section id="contact" className={style.contact} ref={sectionRef}>
       <div className={style.inner}>
         <span className="eyebrow">Get In Touch</span>
-        <h2 className={style.heading}>Let&rsquo;s build something worth shipping.</h2>
+        <h2 className={style.heading}>Let&rsquo;s build something</h2>
         <p className={style.subtitle}>
-          Have a project, an idea, or just want to talk tech? My inbox is open.
+          Feel free to reach out. I'm always open to emails.
         </p>
         <a className={style.emailLink} href="mailto:ayush.mazumdar111@gmail.com">
           ayush.mazumdar111@gmail.com

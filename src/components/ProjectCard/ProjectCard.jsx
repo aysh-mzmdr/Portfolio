@@ -1,14 +1,15 @@
 import style from "./ProjectCard.module.css";
 
-function ProjectCard({ index, image, name, info, link, tags, reverse }) {
-  const openLink = () => window.open(link, "_blank", "noopener,noreferrer");
+function ProjectCard({ index, image, name, info, githubLink, hasLiveLink, liveLink, tags, reverse }) {
+  const openGithub = () => window.open(githubLink, "_blank", "noopener,noreferrer");
+  const openLiveLink = () => window.open(liveLink, "_blank", "noopener,noreferrer");
 
   return (
     <div className={`${style.row} ${reverse ? style.reverse : ""}`} data-project-row>
       <button
         className={style.imageWrap}
         data-cursor="hover"
-        onClick={openLink}
+        onClick={openGithub}
         aria-label={`Open ${name} project`}
       >
         <img src={image} alt={name} loading="lazy" decoding="async" />
@@ -25,9 +26,16 @@ function ProjectCard({ index, image, name, info, link, tags, reverse }) {
             </span>
           ))}
         </div>
-        <button className={style.linkButton} onClick={openLink}>
-          View Project <span aria-hidden="true">&rarr;</span>
-        </button>
+        <div className={style.buttonRow}>
+          <button className={style.linkButton} onClick={openGithub}>
+            View Project <span aria-hidden="true">&rarr;</span>
+          </button>
+          {hasLiveLink && (
+            <button className={style.liveLinkButton} onClick={openLiveLink}>
+              Live Link <span aria-hidden="true">&rarr;</span>
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

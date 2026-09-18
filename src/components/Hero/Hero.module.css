@@ -41,10 +41,22 @@
   perspective: 800px;
 }
 
+.photoOuter::after {
+  content: '';
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent));
+  filter: blur(18px);
+  opacity: 0.55;
+  animation: spin 6s linear infinite;
+  z-index: -1;
+}
+
 .photoOuter::before {
   content: '';
   position: absolute;
-  inset: -3px;
+  inset: -4px;
   border-radius: 50%;
   background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent));
   animation: spin 6s linear infinite;
@@ -56,6 +68,7 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
+  overflow: hidden;
   transform-style: preserve-3d;
   will-change: transform;
 }
@@ -65,8 +78,7 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  background: var(--bg);
-  border: 3px solid var(--bg);
+  display: block;
 }
 
 @keyframes spin {

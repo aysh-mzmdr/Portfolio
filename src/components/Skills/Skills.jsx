@@ -1,21 +1,9 @@
 import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger, prefersReducedMotion } from "../../utils/gsapSetup";
 import style from "./Skills.module.css";
+import { tech } from "../../data/technologies";
 
-const CATEGORIES = [
-  { label: "Languages", items: ["C++", "Java", "Python"] },
-  { label: "Web Development", items: ["ReactJs", "ExpressJs", "NodeJs", "Django"] },
-  {
-    label: "Blockchain",
-    items: ["Solidity", "Web3Js", "Ganache", "Truffle", "Hardhat", "Foundry"],
-  },
-  { label: "Databases", items: ["MySQL", "PostgreSQL", "MongoDB"] },
-  {
-    label: "Tools & Systems",
-    items: ["GSAP", "ThreeJs", "Blender", "Windows", "Linux", "Kali Linux"],
-  },
-  { label: "Security", items: ["Nmap", "Burp Suite", "Hydra", "Wireshark"] },
-];
+const CATEGORIES = tech;
 
 function Skills() {
   const sectionRef = useRef(null);
