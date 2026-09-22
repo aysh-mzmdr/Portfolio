@@ -1,7 +1,7 @@
 import Chemical_Equipment_Parameter_Visualizer from "/assets/Chemical_Equipment_Parameter_Visualizer.jpg";
-import ObstacleMania from "/assets/ObstacleMania.jpg";
+import The_Unknown_Labyrinth from "/assets/Labyrinth.jpg";
 import Solidity_Wallet from "/assets/Solidity_Wallet.jpg";
-import Coffee_Website from "/assets/Coffee Website.jpg";
+import Pokedex from "/assets/Pokedex.jpg";
 
 export const projects = [
   {
@@ -14,13 +14,22 @@ export const projects = [
     tags: ["Django", "React", "Pandas"],
   },
   {
-    image: ObstacleMania,
-    name: "ObstacleMania",
-    info: "A high-speed obstacle dodging game built in Unity with multiple difficulty levels and real-time collision mechanics.",
-    githubLink: "https://github.com/aysh-mzmdr/ObstacleMania/",
+    image: The_Unknown_Labyrinth,
+    name: "The Unknown Labyrinth",
+    info: "Navigate a procedurally generated, algorithmically-verified atmospheric first-person maze-horror game built in Unity, with custom radial fog shader that fades visibility realistically.",
+    githubLink: "https://github.com/aysh-mzmdr/The_Unknown_Labyrinth",
     hasLiveLink: true,
-    liveLink: "https://aysh-mzmdr.github.io/ObstacleMania/",
-    tags: ["Unity", "C#", "WebGL"],
+    liveLink: "https://aysh-mzmdr.github.io/The_Unknown_Labyrinth/",
+    tags: ["Unity", "Procedural Generation", "HLSL", "C#", "WebGL"],
+  },
+  {
+    image: Pokedex,
+    name: "Pokedex",
+    info: "An interactive, animated Pokédex that fetches live Pokémon data from PokeAPI, complete with sound effects, cries, and a scan-through-entries experience.",
+    githubLink: "https://github.com/aysh-mzmdr/Pokedex/",
+    hasLiveLink: true,
+    liveLink: "https://aysh-mzmdr.github.io/Pokedex/",
+    tags: ["React", "JavaScript", "REST API", "CSS"],
   },
   {
     image: Solidity_Wallet,
@@ -30,15 +39,6 @@ export const projects = [
     hasLiveLink: false,
     liveLink: "",
     tags: ["Solidity", "Web3.js", "ThreeJs"],
-  },
-  {
-    image: Coffee_Website,
-    name: "Coffee Website",
-    info: "A front-end responsive website designed and built for a fictional coffee shop brand.",
-    githubLink: "https://github.com/aysh-mzmdr/Coffee_Website/",
-    hasLiveLink: true,
-    liveLink: "https://aysh-mzmdr.github.io/Coffee_Website/",
-    tags: ["HTML", "CSS", "JavaScript"],
   },
 ];
 
