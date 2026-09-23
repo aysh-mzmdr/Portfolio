@@ -5,15 +5,6 @@ import Pokedex from "/assets/Pokedex.jpg";
 
 export const projects = [
   {
-    image: Chemical_Equipment_Parameter_Visualizer,
-    name: "Chemical Equipment Parameter Visualizer",
-    info: "A hybrid web and desktop application to analyze and visualize chemical equipment data in real time.",
-    githubLink: "https://github.com/aysh-mzmdr/Chemical_Equipment_Parameter_Visualizer/",
-    hasLiveLink: false,
-    liveLink: "",
-    tags: ["Django", "React", "Pandas"],
-  },
-  {
     image: The_Unknown_Labyrinth,
     name: "The Unknown Labyrinth",
     info: "Navigate a procedurally generated, algorithmically-verified atmospheric first-person maze-horror game built in Unity, with custom radial fog shader that fades visibility realistically.",
@@ -21,6 +12,15 @@ export const projects = [
     hasLiveLink: true,
     liveLink: "https://aysh-mzmdr.github.io/The_Unknown_Labyrinth/",
     tags: ["Unity", "Procedural Generation", "HLSL", "C#", "WebGL"],
+  },
+  {
+    image: Chemical_Equipment_Parameter_Visualizer,
+    name: "Chemical Equipment Parameter Visualizer",
+    info: "A hybrid web and desktop application to analyze and visualize chemical equipment data in real time.",
+    githubLink: "https://github.com/aysh-mzmdr/Chemical_Equipment_Parameter_Visualizer/",
+    hasLiveLink: false,
+    liveLink: "",
+    tags: ["Django", "React", "Pandas"],
   },
   {
     image: Pokedex,
