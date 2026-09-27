@@ -14,8 +14,50 @@ function Navbar() {
   const [activeId, setActiveId] = useState("intro");
   const [menuOpen, setMenuOpen] = useState(false);
   const [bgStyle, setBgStyle] = useState({ transform: "translateX(0)", width: 0 });
+  const [hidden, setHidden] = useState(false);
   const linkRefs = useRef({});
   const navRef = useRef(null);
+  const lastScrollY = useRef(0);
+  const revealTimer = useRef(null);
+  const ticking = useRef(false);
+
+  useEffect(() => {
+    const IDLE_REVEAL_DELAY = 650;
+
+    lastScrollY.current = window.scrollY;
+
+    const evaluateScroll = () => {
+      const currentY = window.scrollY;
+      const delta = currentY - lastScrollY.current;
+
+      if (revealTimer.current) clearTimeout(revealTimer.current);
+
+      if (currentY < 80) {
+        setHidden(false);
+      } else {
+        if (Math.abs(delta) > 4) setHidden(true);
+        // Reschedule on every scroll tick (not just significant ones) so
+        // momentum scrolling's tiny trailing deltas still push the reveal
+        // out until motion has actually stopped for IDLE_REVEAL_DELAY.
+        revealTimer.current = setTimeout(() => setHidden(false), IDLE_REVEAL_DELAY);
+      }
+
+      lastScrollY.current = currentY;
+      ticking.current = false;
+    };
+
+    const handleScroll = () => {
+      if (ticking.current) return;
+      ticking.current = true;
+      requestAnimationFrame(evaluateScroll);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (revealTimer.current) clearTimeout(revealTimer.current);
+    };
+  }, []);
 
   useEffect(() => {
     const elements = SECTIONS.map((s) => document.getElementById(s.id)).filter(Boolean);
@@ -50,7 +92,7 @@ function Navbar() {
 
   return (
     <>
-      <div className={style.navbar}>
+      <div className={`${style.navbar} ${hidden ? style.navbarHidden : ""}`}>
         <div className={style.logo}>
           aysh<span className={style.underscore}>_</span><span>mzmdr</span>
         </div>

@@ -11,6 +11,45 @@
   pointer-events: none;
 }
 
+.logo,
+.pillNav,
+.menuButton {
+  transform: translateY(0) scale(1);
+  transform-origin: top center;
+  opacity: 1;
+  filter: blur(0px);
+  will-change: transform, opacity, filter;
+  transition: transform 0.55s var(--ease-out), opacity 0.4s ease,
+    filter 0.4s ease;
+}
+
+.pillNav {
+  transition-delay: 0.05s;
+}
+
+.menuButton {
+  transition-delay: 0.09s;
+}
+
+.navbarHidden .logo,
+.navbarHidden .pillNav,
+.navbarHidden .menuButton {
+  transform: translateY(-18px) scale(0.92);
+  opacity: 0;
+  filter: blur(5px);
+  transition: transform 0.3s var(--ease-in-out), opacity 0.28s ease,
+    filter 0.28s ease;
+  transition-delay: 0s;
+}
+
+.navbarHidden .pillNav {
+  transition-delay: 0.05s;
+}
+
+.navbarHidden .menuButton {
+  transition-delay: 0.09s;
+}
+
 .logo {
   font-family: var(--font-display);
   font-weight: 700;
